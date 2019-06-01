@@ -1,0 +1,5 @@
+**/**
+!app/**
+!tools/**
+!appsscript.json
+!.claspignore
