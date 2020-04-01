@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import g from "./globals"
 
 class Root extends Component {
-  render() {    
+  render() {
+    g.GRequester().Router()    
     return (
       <h1>Hola mundo desde React</h1>
     )

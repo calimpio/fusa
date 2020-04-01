@@ -51,5 +51,5 @@ function Response_(){
 }
 
 function Request_(query){
-    this.query=query;
+    this.params=query;
 }

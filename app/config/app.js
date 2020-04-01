@@ -40,3 +40,15 @@ function install_modal_tigger()
 var app_router={
     
 }
+
+//middlewares
+
+function MiddleWareAuthUser_(req,res,next){
+  var u = User_().where("session == "+req.params.session_token);
+  if(u){
+      req.user = User_public_porps_(u[0]);       
+      next();
+  }else{
+      res.status(403).send({erros:['session_token_null']});
+  }
+}
