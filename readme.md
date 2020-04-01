@@ -1,14 +1,15 @@
-- #Install
-    1. `$ npm i @google/clasp -g` install `clasp`
-    2. `npm i -S @types/google-apps-script`  optional    
-    3. `clasp push`
+- # AppScript Web Aplication With React.JS
 
+- ## Install
+    1. Intall clasp: `npm i @google/clasp -g`    
+    2. `clasp push`
+    
     - To your current Google Drive
-    1. `$ git clone https://gitlab.com/barbosa93cg/app-mallweb-gruff.git`
+    1. `$ git clone https://github.com/calimpio/fusa.git`
     2. `$ clasp login`
-    3. delete `.clasp.json`
+        1. License problem on Windows: `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`    
     3. `$ clasp create [app_script_name]`
-    3. `app/config/app` change `db_sheet_id` value for `Google.Sheet id`
+    3. `app/config/app` change `google_drive_sheetbook_id` value for `Google.Sheet id`
     3. clasp push
 
     -fast commands:
@@ -26,6 +27,10 @@
 
 
 - #Changelog
+
+- ##[0.1.5] 2020-03-1 
+    - added `react.js`
+    - added `webpack builder`
 
 - ##[0.1.5] 2019-06-1 
     - added `controller/main app_router`
