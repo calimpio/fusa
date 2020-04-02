@@ -6,6 +6,7 @@ import {Router} from "./router"
 import Login from './views/auth/Login';
 import Register from './views/auth/Register';
 import Deskboard from './views/Deskborad';
+import AppNavigation from './views/AppNavigation';
 
 class Root extends Component {
   render() {
@@ -13,7 +14,7 @@ class Root extends Component {
       <Router view="register">
         <Login name="login" />
         <Register name="register" />
-        <Router view="deskboard" name="home">
+        <Router view="deskboard" name="home">            
             <Deskboard name="deskboard" />
         </Router>        
       </Router>

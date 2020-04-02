@@ -6,7 +6,14 @@ function Router(url,qry){
 }
 
 
-
+/**
+ * 
+ * @param {object} obj 
+ * @param {string[]} params 
+ * @param {number} i 
+ * @param {Request_} request 
+ * @param {Response_} response 
+ */
 function Routing_(obj,params,i,request,response){
     if(obj && params.length>i)
     if(obj[params[i]]){
@@ -18,14 +25,13 @@ function Routing_(obj,params,i,request,response){
             if(typeof routes.use === "function")
             {
                 next = false;
-                var res = routes.use(request,response,function(){next=true;});                
-                if(!next)return res;
+                routes.use(request,response,function(){next=true;});           
             }
                
             if(next){
                 return Routing_(routes.router,params,i+1,request,response);
             }
-            return response;
+            return response.res();
         }
             
     }
@@ -45,6 +51,10 @@ function Response_(){
 
     this.send=function(data){
         res.data=data;
+        return res;
+    }
+
+    this.res=function(){
         return res;
     }
 

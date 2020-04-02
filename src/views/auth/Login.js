@@ -5,15 +5,18 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
+        keeplogin: false,
     }
 
-    onLogin=()=>{
-        globals.GRequester((res)=>{
-           if(res.status==200){
-               this.props.router.setView("home",{session_token:res.data.session_token});
-               
-           }
-        }).Router("auth/login",this.state);
+    onLogin = () => {
+        globals.GRequester((res) => {
+            if (res.status == 200) {
+                this.props.router.setView("home", { session_token: res.data.session_token });
+                if (this.state.keeplogin) {
+                    localStorage.setItem(globals.storages.session_token, res.data.session_token);
+                }
+            }
+        }).Router("auth/login", this.state);
     }
 
     render() {
@@ -32,11 +35,24 @@ export default class Login extends Component {
                 }} />
             </div>
             <div>
-                <button onClick={this.onLogin}>Login</button>
+                <div class="switch">
+                    <label>
+                        Keep login:
+                        <input type="checkbox" value={this.state.keeplogin} onChange={e => {
+                            this.setState({ keeplogin: e.currentTarget.value });
+                        }} />
+                        <span class="lever"></span>
+                    </label>
+                </div>
             </div>
             <div>
-                <a href="#" onClick={()=>this.props.router.setView("register")}>Registration</a>
-                <a href="#" onClick={()=>this.props.router.setView("forgetpassword")}>Forget Password!</a>
+                <button className="btn" onClick={this.onLogin}>Login</button>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="#" onClick={() => this.props.router.setView("register")}>Registration</a></li>
+                    <li><a href="#" onClick={() => this.props.router.setView("forgetpassword")}>Forget Password!</a></li>
+                </ul>
             </div>
         </div>);
     }

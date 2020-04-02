@@ -15,10 +15,9 @@ function HashEncript(key){
  * 
  * @returns {boolean} 
  */
-function HashCompare(value , key, data){    
+function HashCompare(value , key){    
     var passb = Utilities.base64DecodeWebSafe(key,Utilities.Charset.UTF_8);
-    var passd = Utilities.newBlob(passb).getDataAsString();
-    data=passd;
+    var passd = Utilities.newBlob(passb).getDataAsString();    
     return passd === value;
 }
 /**

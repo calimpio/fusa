@@ -28,13 +28,16 @@ export class Router extends Component{
 
     params = {};
     
-    setParams(params){
-        var root = this.goToRoot();
-        root.setState({params});
+    setParams(params){        
+        this.goToRoot().setState({params});
     }
 
     getParam(key){
         return this.goToRoot().state.params[key];
+    }
+
+    getParams(){
+        return this.goToRoot().state.params;
     }
 
 
@@ -42,7 +45,7 @@ export class Router extends Component{
     render(){        
         var r = React.Children.map(this.props.children,(v)=>{
             if(v.props.name === this.state.view)
-                return v;
+                return v;            
         })
         return <div>            
             {r}

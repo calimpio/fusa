@@ -26,9 +26,10 @@ app_router["auth"] = {
             v.rule("password", { require: [] });
             if (!v.hasErros()) {
                 var u = User_().where("username == " + req.params.username);
-                if (u) {
-                    var data="";
-                    if (HashCompare(req.params.password, u[0].getField('password'),data)) {
+                if (u.length>0) {                    
+                    if (HashCompare(req.params.password, u[0].getField('password'))) {
+                        if(u[0].getField('session')!=="null")
+                            return res.send({session_token:u[0].getField('session')})
                         var s = randomStr();
                         var us = User_().where("session == " + s);
                         if (us.length==0) {
@@ -37,8 +38,6 @@ app_router["auth"] = {
                             return res.send({ session_token: s });
                         }
                         return res.status(401).send({ errors: ['TokenHasTaken'] });
-                    }else{
-                        return res.send({data:data});
                     }
                 }
             }

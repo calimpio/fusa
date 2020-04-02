@@ -16,8 +16,15 @@ export default class Register extends Component{
     }
 
     render(){
-        return <div>
+        var session_token = localStorage.getItem(globals.storages.session_token);
+        if(session_token!=="null"){
+            this.props.router.setView("home",{session_token});
+        }
+        return <div className="container">
             <h2>Registration</h2>
+            <div>
+                <a href="#" className="right" onClick={()=>this.props.router.setView("login")}>Login</a>                
+            </div>
             <div>
                 <label>User Name</label>
                 <input type="text" value={this.state.username} onChange={e=>{this.setState({username:e.currentTarget.value})}}/>                
@@ -35,11 +42,8 @@ export default class Register extends Component{
                 <input type="password" value={this.state.password} onChange={e=>{this.setState({password:e.currentTarget.value})}}/>                
             </div>
             <div>
-                <button onClick={this.onRegister}>Register</button>
-            </div>
-            <div>
-                <a href="#" onClick={()=>this.props.router.setView("login")}>Login</a>                
-            </div>
+                <button className="btn" onClick={this.onRegister}>Register</button>
+            </div>            
         </div>
     }
 }
