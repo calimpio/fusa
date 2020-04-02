@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import g from "./globals"
+import {Router} from "./router"
+
+//views
+import Login from './views/auth/Login';
+import Register from './views/auth/Register';
+import Deskboard from './views/Deskborad';
 
 class Root extends Component {
   render() {
-    g.GRequester().Router()    
     return (
-      <h1>Hola mundo desde React</h1>
+      <Router view="register">
+        <Login name="login" />
+        <Register name="register" />
+        <Router view="deskboard" name="home">
+            <Deskboard name="deskboard" />
+        </Router>        
+      </Router>
     )
   }
 }

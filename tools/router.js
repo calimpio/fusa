@@ -18,8 +18,8 @@ function Routing_(obj,params,i,request,response){
             if(typeof routes.use === "function")
             {
                 next = false;
-                routes.use(request,response,function(){next=true;});
-                if(!next)return response;
+                var res = routes.use(request,response,function(){next=true;});                
+                if(!next)return res;
             }
                
             if(next){

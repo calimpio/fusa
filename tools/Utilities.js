@@ -5,7 +5,7 @@
  * @returns {string} 
  */
 function HashEncript(key){
-    return Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, key))
+    return Utilities.base64EncodeWebSafe(key,Utilities.Charset.UTF_8);
 }
 
 /**
@@ -15,9 +15,10 @@ function HashEncript(key){
  * 
  * @returns {boolean} 
  */
-function HashCompare(value , key){    
-    var passb = Utilities.base64Decode(key);
-    var passd = Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, passb);
+function HashCompare(value , key, data){    
+    var passb = Utilities.base64DecodeWebSafe(key,Utilities.Charset.UTF_8);
+    var passd = Utilities.newBlob(passb).getDataAsString();
+    data=passd;
     return passd === value;
 }
 /**
