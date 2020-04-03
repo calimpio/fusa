@@ -27,5 +27,9 @@ var validation_rules = {
     email:function(key,data){
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!re.test(data)) return 'EmailBadFormat';
+    },
+    confirmation:function(key,data,value){
+        if(data!==value) return 'ConfrimationError'
+
     }
 }

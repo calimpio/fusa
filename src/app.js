@@ -5,8 +5,9 @@ import {Router} from "./router"
 //views
 import Login from './views/auth/Login';
 import Register from './views/auth/Register';
+import ForgetPassword from './views/auth/ForgetPassword';
 import Deskboard from './views/Deskborad';
-import AppNavigation from './views/AppNavigation';
+
 
 class Root extends Component {
   render() {
@@ -14,6 +15,7 @@ class Root extends Component {
       <Router view="register">
         <Login name="login" />
         <Register name="register" />
+        <ForgetPassword name="forgetpassword" />
         <Router view="deskboard" name="home">            
             <Deskboard name="deskboard" />
         </Router>        

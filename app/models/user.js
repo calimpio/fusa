@@ -9,7 +9,7 @@ function User_(){
      * @returns {item_} item
      */
     function asUser(){          
-        this.fields = ['id','username','name','email','password','session'];       
+        this.fields = ['id','username','name','email','password','session','forgetpassword-code'];       
     }
     return SheetModel_('Users', asUser, app.db_sheet());
 }

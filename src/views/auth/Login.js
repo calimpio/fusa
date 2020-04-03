@@ -20,7 +20,7 @@ export default class Login extends Component {
     }
 
     render() {
-        return (<div>
+        return (<div className="container">
             <div>
                 <h2>Login</h2>
                 <label>User Name:</label>
@@ -51,7 +51,7 @@ export default class Login extends Component {
             <div>
                 <ul>
                     <li><a href="#" onClick={() => this.props.router.setView("register")}>Registration</a></li>
-                    <li><a href="#" onClick={() => this.props.router.setView("forgetpassword")}>Forget Password!</a></li>
+                    <li><a href="#" onClick={() => this.props.router.setView("forgetpassword")}>Forget Password</a></li>
                 </ul>
             </div>
         </div>);

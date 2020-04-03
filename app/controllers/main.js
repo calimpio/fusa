@@ -3,7 +3,7 @@ function doGet() {
 }
 
 function modal() {
-    SpreadsheetApp.getUi().showModalDialog(Template('index'), 'MyAPP');
+    SpreadsheetApp.getUi().showModalDialog(Template('index'), app.name);
 }
 
 
