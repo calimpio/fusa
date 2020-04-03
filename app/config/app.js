@@ -6,7 +6,7 @@ var app = {
 
 
   /**Database File Sheet id*/
-  db_sheet_id: '13jfAarrJgZ8dcLu9XG2K95PUcMg6YEAW1xJNKt8tnIA',
+  db_sheet_id: 'google_drive_sheetbook_id',
   //  
 
   /**Database File Sheet
