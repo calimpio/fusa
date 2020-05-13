@@ -4,12 +4,12 @@ function MiddlewareAuthUser_(req, res, next) {
     var v = new Validation_(req.params);
     v.rule("session_token", { require: [] });
     if (!v.hasErros()) {
-        var u = User_().where("session == " + req.params.session_token);
-        if (u.length > 0) {
-            req.user = u[0];
+        var u = User_().where("session",req.params.session_token).first();
+        if (u) {
+            req.user = u;
             next();
         } else {
-            res.status(403).send({ erros: ['session_token_null'] });
+            res.status(403).send({ erros:{session:['session_token_null']}});
         }
     }
     else

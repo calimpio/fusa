@@ -1,32 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--METAS-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--STYLES-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <style>
+        .switch label input[type=checkbox]:checked+ .lever {
+            background-color: #3f51b5;
+        }
 
-        
+        .switch label input[type=checkbox]:checked+ .lever:after {
+            background-color: #9fa8da;
+        }
+
+        .switch label .lever {
+            content: "";
+            display: inline-block;
+            position: relative;
+            width: 36px;
+            height: 14px;
+            background-color: grey;
+            border-radius: 15px;
+            margin-right: 10px;
+            -webkit-transition: background 0.3s ease;
+            transition: background 0.3s ease;
+            vertical-align: middle;
+            margin: 0 16px;
+        }
+
+        .switch label .lever:after {
+            background-color: rgb(195, 191, 191)163, 161, 161);
+            -webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+    <style>
+        /* label color /
+        .input-field label {
+            color: rgb(23, 43, 221) !important;
+        }
+
+        /* label focus color /
+        input:focus +label {
+            color: #1a237e !important;
+        }
+
+        .input-field input{
+            border-bottom: 1px solid #000 !important;            
+            box-shadow: 0 0px 0 0 #1a237e !important;
+        }
+
+        /* label underline focus color /
+        .input-field input:focus {
+            border-bottom: 1px solid #3f51b5 !important;            
+            box-shadow: 0 1px 0 0 #1a237e !important;
+        }
+
+        /* valid color /
+        .input-field input.valid {
+            border-bottom: 1px solid #3f51b5 !important;
+            box-shadow: 0 1px 0 0 #1a237e !important;
+        }
+
+        /* invalid color /
+        .input-field input.invalid {
+            border-bottom: 1px solid red;
+            box-shadow: 0 1px 0 0 red;
+        }
+
+        /* icon prefix focus color /
+        .input-field .prefix.active {
+            color: #000 !important;
+        }
+        /**/
+    </style>
+
 </head>
+
 <body>
-    
-    <div id="app" class="">          
-             
+
+    <div id="app" class="">
+
     </div>
-    <!--SCRIPTS-->
-    
+    <!--SCRIPTS-->    
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+
     <!--Google APIs-->
     <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
     <!--Google plataform-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script> 
-    
-    <?!= Asset('js/app') ?> 
-</body>    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <?!= Asset('js/css') ?>
+    <?!= Asset('js/app') ?>
+</body>
+
 </html>

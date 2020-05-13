@@ -25,8 +25,21 @@ function Routing_(obj,params,i,request,response){
             if(typeof routes.use === "function")
             {
                 next = false;
-                routes.use(request,response,function(){next=true;});           
+                routes.use(request,response,function(){next=true;});
+                if(!next)
+                    return response.res();           
             }
+            if(params.length>i+1){
+            if( typeof routes.model === "function" && 
+                (routes.router[params[i+1]] && (params[i+1]==='show' || params[i+1]==='destroy' || params[i+1]==='update')) && 
+                typeof routes.column === 'string' && typeof routes.param === 'string'){
+                request[params[i]] = routes.model().where(routes.column,request.params[routes.param]).first();                
+                if(request[params[i]])
+                    return Routing_(routes.router,params,i+1,request,response);
+                return response.status(404).send();
+            }}else if(typeof routes.index === 'function'){
+                return routes.index(request,response);
+            }           
                
             if(next){
                 return Routing_(routes.router,params,i+1,request,response);

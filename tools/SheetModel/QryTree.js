@@ -45,21 +45,20 @@
         this.edit = function (qry,matrix,values) {
             BA = new BoolAutomata();
             BA.field(qry,0);
-            for (var row in matrix) {
-				if (root.exec(matrix[row])) {
-					matrix[row] = values;
+            return matrix.map((i,k)=> {
+				if (root.exec(matrix[k])) {
+					matrix[k] = values;
 				}
-			}
-            return matrix;
+			});            
         };
         this.custom = function (qry,matrix,callback) {
             BA = new BoolAutomata();
             BA.field(qry,0);
-            for (var row in matrix) {
-				if (root.exec(matrix[row])) {
-					callback(row,matrix[row]);
+            matrix.forEach((i,k)=>{
+				if (root.exec(matrix[k])) {
+					callback(row,matrix[k]);
 				}
-			}            
+			});            
         };
 		var field = {
 			state: 1,

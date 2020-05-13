@@ -1,13 +1,21 @@
 const fs = require('fs');
 const path = require('path');
 var cmd = require('node-cmd');
-fs.readFile(path.resolve(__dirname, 'dist/app.js'),($e,$data)=>{   
-    if(!$e){        
-        fs.writeFile(path.resolve(__dirname, 'app/views/assets/js/app.html'),"<script>"+$data+"</script>",()=>{            
-            console.log("app copyed to views/assets");            
-            cmd.get("clasp push",(e,data)=>{
-                console.log(data);                
+fs.readFile(path.resolve(__dirname, 'dist/app.js'), ($e, $data) => {
+    if (!$e) {
+        fs.writeFile(path.resolve(__dirname, 'app/views/assets/js/app.html'), "<script>" + $data + "</script>", () => {
+            console.log("app copyed to views/assets");
+            fs.readFile(path.resolve(__dirname, 'dist/css.js'), ($e, $data) => {
+                if (!$e) {
+                    fs.writeFile(path.resolve(__dirname, 'app/views/assets/js/css.html'), "<script>" + $data + "</script>", () => {
+                        console.log("css copyed to views/assets");
+                        cmd.get("clasp push", (e, data) => {
+                            console.log(data);
+                        })
+                    });
+                }
             })
         });
     }
 })
+

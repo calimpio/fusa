@@ -1,59 +1,70 @@
 import React, { Component } from "react"
-import globals from "../../globals";
+import tools from "../../tools";
+import { Link, Router } from "../../router";
+import BaseView from "../../layouts/BaseView";
+import { Switch, Button, Input } from "../../components/Utilities";
 
-export default class Login extends Component {
+export default class Login extends BaseView {
     state = {
         username: "",
         password: "",
         keeplogin: false,
+        errors:{}
     }
 
     onLogin = () => {
-        globals.GRequester((res) => {
+        tools.api.request(tools.api.routes.login, this.state, res => {
             if (res.status == 200) {
-                this.props.router.setView("home", { session_token: res.data.session_token });
+                Router.root.redirect(Router.root.getParams().redirectAfterLogin || "deskboard", {
+                    session_token: res.data.session_token,
+                    user: res.data.user,
+                });
                 if (this.state.keeplogin) {
-                    localStorage.setItem(globals.storages.session_token, res.data.session_token);
+                    localStorage.setItem(tools.storages.session_token, res.data.session_token);
                 }
             }
-        }).Router("auth/login", this.state);
+            else{
+                this.setState({errors:res.data.errors});
+            }
+        });
     }
 
-    render() {
-        return (<div className="container">
+    navRight() {
+        return <><ul>            
+            <li><Link to="register">Registrarse</Link></li>
+        </ul>        
+        </>
+    }
+
+    content() {
+        tools.session(this);
+        return <div>
+            <h2>Ingresar</h2>
+            <Input  type="text" 
+                    label="Usuario" 
+                    errors={this.renderErrors('username','Usuario')} 
+                    value={this.state.username} 
+                    onChange={this.onChangeParam('username')} 
+                    onBlur={this.removeError('username')} 
+                    />           
+            <Input  label="Contraseña" 
+                    type="password" 
+                    errors={this.renderErrors('password','Contraseña')} 
+                    value={this.state.password} 
+                    onChange={this.onChangeParam('password')} 
+                    onBlur={this.removeError('password')}
+                    />            
             <div>
-                <h2>Login</h2>
-                <label>User Name:</label>
-                <input type="text" value={this.state.username} onChange={e => {
-                    this.setState({ username: e.currentTarget.value });
-                }} />
+                <Switch value={this.state.keeplogin} leftLabel="Mantener sesion:" onChange={this.onChangeParam('keeplogin')}/>                
             </div>
             <div>
-                <label>Password:</label>
-                <input type="password" value={this.state.password} onChange={e => {
-                    this.setState({ password: e.currentTarget.value });
-                }} />
-            </div>
-            <div>
-                <div class="switch">
-                    <label>
-                        Keep login:
-                        <input type="checkbox" value={this.state.keeplogin} onChange={e => {
-                            this.setState({ keeplogin: e.currentTarget.value });
-                        }} />
-                        <span class="lever"></span>
-                    </label>
-                </div>
-            </div>
-            <div>
-                <button className="btn" onClick={this.onLogin}>Login</button>
+                <Button onClick={this.onLogin} >Ingresar</Button>                
             </div>
             <div>
                 <ul>
-                    <li><a href="#" onClick={() => this.props.router.setView("register")}>Registration</a></li>
-                    <li><a href="#" onClick={() => this.props.router.setView("forgetpassword")}>Forget Password</a></li>
+                    <li><Link to="forgetpassword" >¿Olvido la contraseña?</Link></li>
                 </ul>
             </div>
-        </div>);
-    }
+        </div>
+    }    
 } 

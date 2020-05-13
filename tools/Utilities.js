@@ -4,7 +4,7 @@
  * @param {string} key
  * @returns {string} 
  */
-function HashEncript(key){
+function HashEncript_(key){
     return Utilities.base64EncodeWebSafe(key,Utilities.Charset.UTF_8);
 }
 
@@ -15,7 +15,7 @@ function HashEncript(key){
  * 
  * @returns {boolean} 
  */
-function HashCompare(value , key){    
+function HashCompare_(value , key){    
     var passb = Utilities.base64DecodeWebSafe(key,Utilities.Charset.UTF_8);
     var passd = Utilities.newBlob(passb).getDataAsString();    
     return passd === value;
@@ -25,8 +25,18 @@ function HashCompare(value , key){
  * @param {string} m
  * @returns {string} 
  */
-function randomStr(m) {
+function reandomStr_(m) {
     var m = m || 15; s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (var i=0; i < m; i++) { s += r.charAt(Math.floor(Math.random()*r.length)); }
     return s;
 };
+
+function JsonStringify_(obj){
+    return Utilities.jsonStringify(obj);    
+}
+
+function JsonParse_(str){
+    return Utilities.jsonParse(str);
+}
+
+

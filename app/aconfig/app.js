@@ -1,20 +1,27 @@
+
+/**Database File Sheet
+   * @var {GoogleAppsScript.Spreadsheet}
+  */
+function db(id) {
+  return SpreadsheetApp.openById(id);
+}
+
+
 var app = {
 
   /**App Name*/
-  name: "App-Name",
+  name: "Arka - Comensa",
   //
 
 
   /**Database File Sheet id*/
-  db_sheet_id: 'google_drive_sheetbook_id',
-  //  
+  db_sheet_id: 'public sheet id',
+  //
+  db_sheet_private_id:'private sheet id',  
 
   /**Database File Sheet
    * @returns {GoogleAppsScript.Spreadsheet}
-  */
-  db_sheet: function () {
-    return SpreadsheetApp.openById(this.db_sheet_id);
-  },
+  */  
   //  
 
 
@@ -28,7 +35,8 @@ var app = {
 
 };
 
-
+app.db_sheet = db(app.db_sheet_id);
+app.db_sheet_private = db(app.db_sheet_private_id);
 
 /**/
 function install_modal_tigger() {
