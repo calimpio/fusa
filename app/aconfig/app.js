@@ -1,6 +1,8 @@
 
 /**Database File Sheet
-   * @var {GoogleAppsScript.Spreadsheet}
+ * 
+ * 
+ * @param {string} id 
   */
 function db(id) {
   return SpreadsheetApp.openById(id);
@@ -10,7 +12,7 @@ function db(id) {
 var app = {
 
   /**App Name*/
-  name: "Arka - Comensa",
+  name: "App-Name",
   //
 
 

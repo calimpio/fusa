@@ -8,7 +8,7 @@ function User_(){
      * @extends {item_} 
      * @returns {item_}
      */    
-    function asUser(){          
+    function User(){          
         this.fields = ['id','username','name','email','password','session','forgetpassword_code','roles'];
         this.publicFields = ['id','username','name','roles'];   
         this.typesFields = {
@@ -38,7 +38,7 @@ function User_(){
         }
         
     }
-    return SheetModel_('Users', asUser,app.db_sheet_private);
+    return SheetModel_('Users', User, app.db_sheet_private);
 }
 
 var roles={

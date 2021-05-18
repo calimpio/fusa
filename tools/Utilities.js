@@ -32,11 +32,11 @@ function reandomStr_(m) {
 };
 
 function JsonStringify_(obj){
-    return Utilities.jsonStringify(obj);    
+    return JSON.stringify(obj);    
 }
 
 function JsonParse_(str){
-    return Utilities.jsonParse(str);
+    return JSON.parse(str);
 }
 
 

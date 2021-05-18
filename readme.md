@@ -1,4 +1,22 @@
-- # AppScript Web Aplication With React.JS
+# Fusa Framework
+## Google Drive AppScript Web Aplication With React.JS
+
+
+- ## Documentation
+    - ## Front-end `./src`
+        - `React` is compiling and saved in `app/view/asstes`.
+        - Using `Materialize with CSS/SASS`.
+
+    - ## Back-end `./app` & `./tools`
+        - ### Controllers:
+            Fusa has a controllers like a Express to connect Front-end to Back-end 
+        - ### Models:
+            Fusa has SheetModels to get/set data from Google Sheets
+        - ### Settings:
+            Fusa use a Google Sheets Documents as Database
+
+
+
 
 - ## Install
     1. Intall clasp: `npm i @google/clasp -g`    
@@ -27,6 +45,9 @@
 
 
 - #Changelog
+- ##[0.1.6] 2021-05-18 
+    - modifided `readme.md` 
+
 
 - ##[0.1.5] 2020-03-1 
     - added `react.js`
